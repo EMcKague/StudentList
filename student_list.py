@@ -44,6 +44,8 @@ class StudentList:
             self.increase_capacity()
             self.move_storage_to_list(storage_container)
 
+        return
+
     def pop(self):
         # remove the last element in the array
         storage_container = []
@@ -53,19 +55,31 @@ class StudentList:
         self._size -= 1
         self.move_storage_to_list
 
+        return
+
     def insert(self, index, val):
+
         storage_container = []
         self.create_storage_container(storage_container)
-        storage_container[index + 1: len(storage_container) + 1] = storage_container[index:len(storage_container)]
-        storage_container[index:index + 1] = [val]
-        self.increase_capacity()
+
+        if index == 0:
+            storage_container[:index] = [val]
+            # print("index was at 0, new container:", storage_container)
+        elif index > self._size:
+            storage_container[self._size:] = [val]
+        else:
+            storage_container[index + 1: len(storage_container) + 1] = storage_container[index:len(storage_container)]
+            storage_container[index:index + 1] = [val]
         self._size += 1
+        if self._size > self._capacity:
+            self.increase_capacity()
         self.move_storage_to_list(storage_container)
 
     def remove(self, val):
         storage_container = []
         self.create_storage_container(storage_container)
         for el in range(self._size):
+            # print("storage containger[el]", storage_container[el])
             if storage_container[el] == val:
                 storage_container = storage_container[:el] + storage_container[el + 1:]
                 self.move_storage_to_list(storage_container)
