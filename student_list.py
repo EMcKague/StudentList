@@ -50,12 +50,13 @@ class StudentList:
         # remove the last element in the array
         storage_container = []
         self.move_list_to_storage(storage_container)
+        popped_num = storage_container[len(storage_container)-2:len(storage_container)-1]
         storage_container[:] = storage_container[:-1]
         # print(storage_container)
         self._size -= 1
         self.move_storage_to_list
 
-        return
+        return popped_num
 
     def insert(self, index, val):
 
