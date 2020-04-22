@@ -50,11 +50,15 @@ class StudentList:
         # remove the last element in the array
         storage_container = []
         self.move_list_to_storage(storage_container)
-        popped_num = storage_container[len(storage_container)-2:len(storage_container)-1]
+        for el in range(self._size):
+          # print(el, storage_container[el])
+          if el == self._size - 1:
+            popped_num = storage_container[el]
+
         storage_container[:] = storage_container[:-1]
         # print(storage_container)
         self._size -= 1
-        self.move_storage_to_list
+        self.move_storage_to_list(storage_container)
 
         return popped_num
 
