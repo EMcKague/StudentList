@@ -51,7 +51,6 @@ class StudentList:
         storage_container = []
         self.move_list_to_storage(storage_container)
         for el in range(self._size):
-          # print(el, storage_container[el])
           if el == self._size - 1:
             popped_num = storage_container[el]
 
