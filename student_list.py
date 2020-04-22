@@ -82,12 +82,16 @@ class StudentList:
     def remove(self, val):
         storage_container = []
         self.create_storage_container(storage_container)
+        # print(self._size)
         for el in range(self._size):
-            # print("storage containger[el]", storage_container[el])
+            # print(el, storage_container[el])
             if storage_container[el] == val:
-                storage_container = storage_container[:el] + storage_container[el + 1:]
-                self.move_storage_to_list(storage_container)
+                # print("test1", storage_container[:el])
+                # print("test2", storage_container[el+1:-1])
+                storage_container = storage_container[:el] + storage_container[el+1:-1]
+                # print("test3", storage_container)
                 self._size -= 1
+                self.move_storage_to_list(storage_container)
                 return
         # print("removed "+ str(val) + ".", storage_container)
 
